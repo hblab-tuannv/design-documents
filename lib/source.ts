@@ -1,16 +1,22 @@
 import { docs } from 'collections/server'
 import { loader } from 'fumadocs-core/source'
+import { i18n } from './i18n'
 import { docsContentRoute, docsImageRoute, docsRoute } from './shared'
 
 // See https://fumadocs.dev/docs/headless/source-api for more info
 export const source = loader({
   baseUrl: docsRoute,
   source: docs.toFumadocsSource(),
+  i18n,
   plugins: [],
 })
 
+function pageLocale(page: (typeof source)['$inferPage']) {
+  return page.locale ?? i18n.defaultLanguage
+}
+
 export function getPageImage(page: (typeof source)['$inferPage']) {
-  const segments = [...page.slugs, 'image.png']
+  const segments = [pageLocale(page), ...page.slugs, 'image.png']
 
   return {
     segments,
@@ -19,7 +25,7 @@ export function getPageImage(page: (typeof source)['$inferPage']) {
 }
 
 export function getPageMarkdownUrl(page: (typeof source)['$inferPage']) {
-  const segments = [...page.slugs, 'content.md']
+  const segments = [pageLocale(page), ...page.slugs, 'content.md']
 
   return {
     segments,

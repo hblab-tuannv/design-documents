@@ -18,6 +18,10 @@ export const docs = defineDocs({
 
 export default defineConfig({
   mdxOptions: {
-    // MDX options
+    remarkImageOptions: {
+      // Keep unreachable external images as plain <img> instead of
+      // failing the whole MDX compilation (default onError is 'error')
+      onError: (error) => console.warn('[remark-image]', error.message),
+    },
   },
 })

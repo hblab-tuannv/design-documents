@@ -1,7 +1,152 @@
+import { uiTranslations } from 'fumadocs-ui/i18n'
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared'
+import { i18n } from './i18n'
 import { appName, gitConfig } from './shared'
 
-export function baseOptions(): BaseLayoutProps {
+// fumadocs-ui only ships English strings — vi/ja must be translated here.
+// displayName is the label shown in the language switcher.
+// The "(data table)" keys are consumed by components/data-table.tsx via
+// useTranslations({ note: 'data table' }).
+export const translations = i18n
+  .translations()
+  .extend(uiTranslations())
+  .extend({
+    keys: [
+      'Filter...(data table)',
+      'Columns(data table)',
+      'No results.(data table)',
+      '{count} of {total} row(s)(data table)',
+      'Rows per page(data table)',
+      'Page {page} of {total}(data table)',
+      'Go to first page(data table)',
+      'Go to previous page(data table)',
+      'Go to next page(data table)',
+      'Go to last page(data table)',
+    ],
+  })
+  .add({
+    en: {
+      displayName: 'English',
+    },
+    vi: {
+      displayName: 'Tiếng Việt',
+      'Back to Home(404 not found page)': 'Về trang chủ',
+      'Choose a language(language switcher)': 'Chọn ngôn ngữ',
+      'Choose a language(language switcher)(aria-label)': 'Chọn ngôn ngữ',
+      'Close Banner(banner)(aria-label)': 'Đóng banner',
+      'Close Search(search dialog)(aria-label)': 'Đóng tìm kiếm',
+      'Collapse Sidebar(sidebar)(aria-label)': 'Thu gọn thanh bên',
+      'Copied Text(code block)(aria-label)': 'Đã sao chép',
+      'Copy Anchor Link(heading anchor)(aria-label)': 'Sao chép liên kết',
+      'Copy Link(accordion)(aria-label)': 'Sao chép liên kết',
+      'Copy Markdown(page actions)': 'Sao chép Markdown',
+      'Copy Text(code block)(aria-label)': 'Sao chép',
+      'Dark(theme switcher)(aria-label)': 'Tối',
+      'Default(type table)': 'Mặc định',
+      'Edit on GitHub(edit page)': 'Sửa trên GitHub',
+      'Last updated on(page footer)': 'Cập nhật lần cuối',
+      'Light(theme switcher)(aria-label)': 'Sáng',
+      'Next Page(pagination)': 'Trang sau',
+      'No Headings(table of contents)': 'Không có đề mục',
+      'No results found(search dialog)': 'Không tìm thấy kết quả',
+      'On this page(table of contents)': 'Trong trang này',
+      'Open Search(search trigger)(aria-label)': 'Mở tìm kiếm',
+      'Open Sidebar(sidebar)(aria-label)': 'Mở thanh bên',
+      'Open in ChatGPT(page actions)': 'Mở trong ChatGPT',
+      'Open in Claude(page actions)': 'Mở trong Claude',
+      'Open in Cursor(page actions)': 'Mở trong Cursor',
+      'Open in GitHub(page actions)': 'Mở trên GitHub',
+      'Open in Scira AI(page actions)': 'Mở trong Scira AI',
+      'Open(page actions)': 'Mở',
+      'Page Not Found(404 not found page)': 'Không tìm thấy trang',
+      'Parameters(type table)': 'Tham số',
+      'Previous Page(pagination)': 'Trang trước',
+      'Prop(type table)': 'Prop',
+      'Read {url}, I want to ask questions about it.(page actions)':
+        'Đọc {url}, tôi muốn hỏi về nội dung này.',
+      'Returns(type table)': 'Giá trị trả về',
+      'Search(search dialog)': 'Tìm kiếm',
+      'Search(search trigger)': 'Tìm kiếm',
+      'System(theme switcher)(aria-label)': 'Hệ thống',
+      'Table of Contents(inline table of contents)': 'Mục lục',
+      'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.(404 not found page)':
+        'Trang bạn đang tìm có thể đã bị xóa, đổi tên hoặc tạm thời không khả dụng.',
+      'Toggle Menu(home layout header)(aria-label)': 'Mở/đóng menu',
+      'Toggle Theme(theme switcher)(aria-label)': 'Đổi giao diện',
+      'Type(type table)': 'Kiểu',
+      'View as Markdown(page actions)': 'Xem dạng Markdown',
+      'Filter...(data table)': 'Lọc...',
+      'Columns(data table)': 'Cột',
+      'No results.(data table)': 'Không có kết quả.',
+      '{count} of {total} row(s)(data table)': '{count} / {total} hàng',
+      'Rows per page(data table)': 'Số hàng mỗi trang',
+      'Page {page} of {total}(data table)': 'Trang {page} / {total}',
+      'Go to first page(data table)': 'Về trang đầu',
+      'Go to previous page(data table)': 'Trang trước',
+      'Go to next page(data table)': 'Trang sau',
+      'Go to last page(data table)': 'Đến trang cuối',
+    },
+    ja: {
+      displayName: '日本語',
+      'Back to Home(404 not found page)': 'ホームに戻る',
+      'Choose a language(language switcher)': '言語を選択',
+      'Choose a language(language switcher)(aria-label)': '言語を選択',
+      'Close Banner(banner)(aria-label)': 'バナーを閉じる',
+      'Close Search(search dialog)(aria-label)': '検索を閉じる',
+      'Collapse Sidebar(sidebar)(aria-label)': 'サイドバーを折りたたむ',
+      'Copied Text(code block)(aria-label)': 'コピーしました',
+      'Copy Anchor Link(heading anchor)(aria-label)': 'リンクをコピー',
+      'Copy Link(accordion)(aria-label)': 'リンクをコピー',
+      'Copy Markdown(page actions)': 'Markdownをコピー',
+      'Copy Text(code block)(aria-label)': 'コピー',
+      'Dark(theme switcher)(aria-label)': 'ダーク',
+      'Default(type table)': 'デフォルト',
+      'Edit on GitHub(edit page)': 'GitHubで編集',
+      'Last updated on(page footer)': '最終更新日',
+      'Light(theme switcher)(aria-label)': 'ライト',
+      'Next Page(pagination)': '次のページ',
+      'No Headings(table of contents)': '見出しがありません',
+      'No results found(search dialog)': '結果が見つかりません',
+      'On this page(table of contents)': 'このページの内容',
+      'Open Search(search trigger)(aria-label)': '検索を開く',
+      'Open Sidebar(sidebar)(aria-label)': 'サイドバーを開く',
+      'Open in ChatGPT(page actions)': 'ChatGPTで開く',
+      'Open in Claude(page actions)': 'Claudeで開く',
+      'Open in Cursor(page actions)': 'Cursorで開く',
+      'Open in GitHub(page actions)': 'GitHubで開く',
+      'Open in Scira AI(page actions)': 'Scira AIで開く',
+      'Open(page actions)': '開く',
+      'Page Not Found(404 not found page)': 'ページが見つかりません',
+      'Parameters(type table)': 'パラメータ',
+      'Previous Page(pagination)': '前のページ',
+      'Prop(type table)': 'プロパティ',
+      'Read {url}, I want to ask questions about it.(page actions)':
+        '{url} を読んで、その内容について質問したいです。',
+      'Returns(type table)': '戻り値',
+      'Search(search dialog)': '検索',
+      'Search(search trigger)': '検索',
+      'System(theme switcher)(aria-label)': 'システム',
+      'Table of Contents(inline table of contents)': '目次',
+      'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.(404 not found page)':
+        'お探しのページは削除されたか、名前が変更されたか、一時的に利用できない可能性があります。',
+      'Toggle Menu(home layout header)(aria-label)': 'メニューを切り替え',
+      'Toggle Theme(theme switcher)(aria-label)': 'テーマを切り替え',
+      'Type(type table)': '型',
+      'View as Markdown(page actions)': 'Markdownとして表示',
+      'Filter...(data table)': '絞り込み...',
+      'Columns(data table)': '列',
+      'No results.(data table)': '結果がありません。',
+      '{count} of {total} row(s)(data table)': '{total} 行中 {count} 行',
+      'Rows per page(data table)': '1ページあたりの行数',
+      'Page {page} of {total}(data table)': '{total} ページ中 {page} ページ目',
+      'Go to first page(data table)': '最初のページへ',
+      'Go to previous page(data table)': '前のページへ',
+      'Go to next page(data table)': '次のページへ',
+      'Go to last page(data table)': '最後のページへ',
+    },
+  })
+
+export function baseOptions(_locale: string): BaseLayoutProps {
   return {
     nav: {
       // JSX supported

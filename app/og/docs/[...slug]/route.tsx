@@ -1,6 +1,7 @@
 import { generate as DefaultImage } from 'fumadocs-ui/og'
 import { notFound } from 'next/navigation'
 import { ImageResponse } from 'next/og'
+import { i18n } from '@/lib/i18n'
 import { appName } from '@/lib/shared'
 import { getPageImage, source } from '@/lib/source'
 
@@ -11,7 +12,8 @@ export async function GET(
   { params }: RouteContext<'/og/docs/[...slug]'>,
 ) {
   const { slug } = await params
-  const page = source.getPage(slug.slice(0, -1))
+  // slug has the shape [lang, ...slugs, 'image.png']
+  const page = source.getPage(slug.slice(1, -1), slug[0])
   if (!page) notFound()
 
   return new ImageResponse(
@@ -28,8 +30,9 @@ export async function GET(
 }
 
 export function generateStaticParams() {
-  return source.getPages().map((page) => ({
-    lang: page.locale,
-    slug: getPageImage(page).segments,
-  }))
+  return i18n.languages.flatMap((lang) =>
+    source.getPages(lang).map((page) => ({
+      slug: getPageImage(page).segments,
+    })),
+  )
 }

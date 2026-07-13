@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from '@fuma-translate/react'
 import {
   type ColumnDef,
   flexRender,
@@ -87,6 +88,8 @@ function compareText(a: string, b: string): number {
 }
 
 export function DataTable(props: ComponentProps<'table'>) {
+  // translations are defined in lib/layout.shared.tsx under "(data table)"
+  const t = useTranslations({ note: 'data table' })
   const [sorting, setSorting] = useState<SortingState>([])
   const [globalFilter, setGlobalFilter] = useState('')
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
@@ -161,7 +164,7 @@ export function DataTable(props: ComponentProps<'table'>) {
     <div className='not-prose w-full'>
       <div className='flex items-center py-4'>
         <Input
-          placeholder='Filter...'
+          placeholder={t('Filter...')}
           value={globalFilter}
           onChange={(event) => setGlobalFilter(event.target.value)}
           className='max-w-sm'
@@ -170,7 +173,7 @@ export function DataTable(props: ComponentProps<'table'>) {
           <DropdownMenuTrigger
             render={
               <Button variant='outline' className='ml-auto'>
-                Columns <ChevronDown />
+                {t('Columns')} <ChevronDown />
               </Button>
             }
           />
@@ -228,7 +231,7 @@ export function DataTable(props: ComponentProps<'table'>) {
                   colSpan={columns.length}
                   className='h-24 text-center'
                 >
-                  No results.
+                  {t('No results.')}
                 </TableCell>
               </TableRow>
             )}
@@ -237,12 +240,16 @@ export function DataTable(props: ComponentProps<'table'>) {
       </div>
       <div className='flex items-center justify-between px-2 py-4'>
         <div className='flex-1 text-muted-foreground text-sm'>
-          {table.getFilteredRowModel().rows.length} of {parsed.rows.length}{' '}
-          row(s)
+          {t('{count} of {total} row(s)', {
+            variables: {
+              count: String(table.getFilteredRowModel().rows.length),
+              total: String(parsed.rows.length),
+            },
+          })}
         </div>
         <div className='flex items-center space-x-6 lg:space-x-8'>
           <div className='flex items-center space-x-2'>
-            <p className='font-medium text-sm'>Rows per page</p>
+            <p className='font-medium text-sm'>{t('Rows per page')}</p>
             <Select
               value={String(table.getState().pagination.pageSize)}
               onValueChange={(value) => table.setPageSize(Number(value))}
@@ -260,8 +267,12 @@ export function DataTable(props: ComponentProps<'table'>) {
             </Select>
           </div>
           <div className='flex w-[100px] items-center justify-center font-medium text-sm'>
-            Page {table.getState().pagination.pageIndex + 1} of{' '}
-            {table.getPageCount()}
+            {t('Page {page} of {total}', {
+              variables: {
+                page: String(table.getState().pagination.pageIndex + 1),
+                total: String(table.getPageCount()),
+              },
+            })}
           </div>
           <div className='flex items-center space-x-2'>
             <Button
@@ -271,7 +282,7 @@ export function DataTable(props: ComponentProps<'table'>) {
               onClick={() => table.setPageIndex(0)}
               disabled={!table.getCanPreviousPage()}
             >
-              <span className='sr-only'>Go to first page</span>
+              <span className='sr-only'>{t('Go to first page')}</span>
               <ChevronsLeft />
             </Button>
             <Button
@@ -280,7 +291,7 @@ export function DataTable(props: ComponentProps<'table'>) {
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
             >
-              <span className='sr-only'>Go to previous page</span>
+              <span className='sr-only'>{t('Go to previous page')}</span>
               <ChevronLeft />
             </Button>
             <Button
@@ -289,7 +300,7 @@ export function DataTable(props: ComponentProps<'table'>) {
               onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
             >
-              <span className='sr-only'>Go to next page</span>
+              <span className='sr-only'>{t('Go to next page')}</span>
               <ChevronRight />
             </Button>
             <Button
@@ -299,7 +310,7 @@ export function DataTable(props: ComponentProps<'table'>) {
               onClick={() => table.setPageIndex(table.getPageCount() - 1)}
               disabled={!table.getCanNextPage()}
             >
-              <span className='sr-only'>Go to last page</span>
+              <span className='sr-only'>{t('Go to last page')}</span>
               <ChevronsRight />
             </Button>
           </div>
