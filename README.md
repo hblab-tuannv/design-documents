@@ -15,6 +15,10 @@ pnpm dev
 
 Open <http://localhost:3000> — it redirects to `/vi`.
 
+To share the docs with teammates on your LAN, copy `.env.example` to
+`.env.local`, set `ALLOWED_DEV_ORIGINS` to your machine's IP, and give them
+`http://<your-ip>:3000`.
+
 ## Build for production
 
 ```bash
