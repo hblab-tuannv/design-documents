@@ -1,47 +1,56 @@
 # design-documents
 
-This is a Next.js application generated with
-[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
+Internal documentation site, available in 3 languages: **Vietnamese** (default), Japanese, English.
 
-It is a Next.js app with [Static Export](https://nextjs.org/docs/app/guides/static-exports) configured.
+## Requirements
 
-Run development server:
+- Node.js and [pnpm](https://pnpm.io)
+
+## Run the dev server
 
 ```bash
-npm run dev
-# or
+pnpm install
 pnpm dev
-# or
-yarn dev
 ```
 
-Open http://localhost:3000 with your browser to see the result.
+Open <http://localhost:3000> — it redirects to `/vi`.
 
-## Explore
+## Build for production
 
-In the project, you can see:
+```bash
+pnpm build
+```
 
-- `lib/source.ts`: Code for content source adapter, [`loader()`](https://fumadocs.dev/docs/headless/source-api) provides the interface to access your content.
-- `lib/layout.shared.tsx`: Shared options for layouts, optional but preferred to keep.
+The output is a static site in the `out/` directory, deployable to any static hosting (Nginx, S3, GitHub Pages…). Preview the build locally:
 
-| Route                     | Description                                            |
-| ------------------------- | ------------------------------------------------------ |
-| `app/(home)`              | The route group for your landing page and other pages. |
-| `app/docs`                | The documentation layout and pages.                    |
-| `app/api/search/route.ts` | The Route Handler for search.                          |
+```bash
+pnpm start
+```
 
-### Fumadocs MDX
+## Add documents
 
-A `source.config.ts` config file has been included, you can customise different options like frontmatter schema.
+Documents live in `docs/`, split by language:
 
-Read the [Introduction](https://fumadocs.dev/docs/mdx) for further details.
+```txt
+docs/
+├── vi/   ← Vietnamese
+├── ja/   ← Japanese
+└── en/   ← English
+```
 
-## Learn More
+Just create a `.md` file in the matching language folder, starting with `title` and `description` frontmatter:
 
-To learn more about Next.js and Fumadocs, take a look at the following
-resources:
+```md
+---
+title: Document title
+description: Short description
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Fumadocs](https://fumadocs.dev) - learn about Fumadocs
+Write the content in plain Markdown.
+```
+
+Save the file and the page appears in the menu right away (the dev server hot-reloads). A few conveniences:
+
+- **Markdown tables** automatically become interactive tables (sorting, search, pagination).
+- **Mermaid diagrams**: write a code block with the `mermaid` language and it renders as a diagram.
+- Create subfolders inside `docs/<language>/` to group documents into sections.
