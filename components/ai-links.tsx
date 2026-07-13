@@ -59,14 +59,13 @@ function CopyLinkButton({
 /**
  * Copyable links to the per-language `llms.txt` / `llms-full.txt` exports,
  * so users can paste them into an AI chat as context. Rendered as the docs
- * sidebar footer; `order-first` lifts it above the language switcher, which
- * sits in the same flex column.
+ * sidebar banner, right below the search box.
  */
 export function AiLinks({ lang }: { lang: string }) {
   const t = useTranslations({ note: 'ai links' })
 
   return (
-    <div className='order-first mb-2 flex flex-col gap-1.5'>
+    <div className='flex flex-col gap-1.5'>
       <p className='inline-flex items-center gap-1.5 font-medium text-fd-muted-foreground text-xs'>
         <Bot className='size-3.5' />
         {t('Docs for AI')}

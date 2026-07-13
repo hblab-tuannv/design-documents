@@ -13,7 +13,7 @@ export default async function Layout({
     <DocsLayout
       tree={source.getPageTree(lang)}
       {...baseOptions(lang)}
-      sidebar={{ footer: <AiLinks lang={lang} /> }}
+      sidebar={{ banner: <AiLinks lang={lang} /> }}
     >
       {children}
     </DocsLayout>
