@@ -2,6 +2,7 @@ import defaultMdxComponents from 'fumadocs-ui/mdx'
 import type { MDXComponents } from 'mdx/types'
 import type { ImgHTMLAttributes } from 'react'
 import { DataTable } from '@/components/data-table'
+import { Mermaid } from '@/components/mdx/mermaid'
 
 const DefaultImg = defaultMdxComponents.img
 
@@ -22,6 +23,7 @@ export function getMDXComponents(components?: MDXComponents) {
     ...defaultMdxComponents,
     img: Img,
     table: DataTable,
+    Mermaid,
     ...components,
   } satisfies MDXComponents
 }

@@ -1,3 +1,4 @@
+import { remarkMdxMermaid } from 'fumadocs-core/mdx-plugins'
 import { metaSchema, pageSchema } from 'fumadocs-core/source/schema'
 import { defineConfig, defineDocs } from 'fumadocs-mdx/config'
 
@@ -18,6 +19,8 @@ export const docs = defineDocs({
 
 export default defineConfig({
   mdxOptions: {
+    // Turn ```mermaid codeblocks into <Mermaid chart='...'/> at compile time
+    remarkPlugins: [remarkMdxMermaid],
     remarkImageOptions: {
       // Keep unreachable external images as plain <img> instead of
       // failing the whole MDX compilation (default onError is 'error')
