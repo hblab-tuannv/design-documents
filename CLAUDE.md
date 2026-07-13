@@ -26,7 +26,7 @@ Fumadocs documentation site on Next.js App Router (React 19), fully statically e
 `docs/*.mdx` → `source.config.ts` (`defineDocs` with `includeProcessedMarkdown: true`) → generated `.source/` (aliased as `collections/*` in tsconfig) → `lib/source.ts` (fumadocs `loader()` exporting `source`) → consumed by all routes.
 
 - New doc page: add `docs/*.mdx` with `title`/`description` frontmatter.
-- `lib/shared.ts` — site constants (`appName`, route prefixes, `gitConfig` for GitHub edit links; still placeholder values).
+- `lib/shared.ts` — site constants (`appName`, route prefixes, `gitConfig` for GitHub edit links).
 - `lib/layout.shared.tsx` — layout options shared by `app/(home)` and `app/docs` layouts.
 
 ### Static export constraints
