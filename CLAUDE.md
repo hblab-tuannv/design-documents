@@ -35,7 +35,7 @@ Fumadocs documentation site on Next.js App Router (React 19), fully statically e
 
 - Search: `app/api/search/route.ts` uses fumadocs `staticGET` to emit a prebuilt Orama index at build time; `components/search.tsx` runs the search fully client-side via `oramaStaticClient`.
 - Dynamic routes (`app/og/docs/[...slug]`, `app/llms.mdx/docs/[[...slug]]`) must declare `generateStaticParams` and `revalidate = false`.
-- LLM-facing outputs: `/llms.txt`, `/llms-full.txt`, and per-page raw markdown at `/llms.mdx/docs/...` (fed by `getLLMText` / processed markdown from `lib/source.ts`).
+- LLM-facing outputs are per-language to keep AI context small: `/{lang}/llms.txt`, `/{lang}/llms-full.txt`, and per-page raw markdown at `/llms.mdx/docs/{lang}/...` (fed by `getLLMText` / processed markdown from `lib/source.ts`). Copyable links live in the sidebar via `components/ai-links.tsx`.
 
 ### MDX rendering
 

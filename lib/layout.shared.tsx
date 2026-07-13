@@ -6,7 +6,8 @@ import { appName, gitConfig } from './shared'
 // fumadocs-ui only ships English strings — vi/ja must be translated here.
 // displayName is the label shown in the language switcher.
 // The "(data table)" keys are consumed by components/data-table.tsx via
-// useTranslations({ note: 'data table' }).
+// useTranslations({ note: 'data table' }), the "(ai links)" keys by
+// components/ai-links.tsx.
 export const translations = i18n
   .translations()
   .extend(uiTranslations())
@@ -22,6 +23,10 @@ export const translations = i18n
       'Go to previous page(data table)',
       'Go to next page(data table)',
       'Go to last page(data table)',
+      'Docs for AI(ai links)',
+      'Copy URL(ai links)',
+      'Index(ai links)',
+      'Full docs(ai links)',
     ],
   })
   .add({
@@ -85,6 +90,10 @@ export const translations = i18n
       'Go to previous page(data table)': 'Trang trước',
       'Go to next page(data table)': 'Trang sau',
       'Go to last page(data table)': 'Đến trang cuối',
+      'Docs for AI(ai links)': 'Tài liệu cho AI',
+      'Copy URL(ai links)': 'Sao chép liên kết',
+      'Index(ai links)': 'Mục lục',
+      'Full docs(ai links)': 'Toàn bộ',
     },
     ja: {
       displayName: '日本語',
@@ -143,6 +152,10 @@ export const translations = i18n
       'Go to previous page(data table)': '前のページへ',
       'Go to next page(data table)': '次のページへ',
       'Go to last page(data table)': '最後のページへ',
+      'Docs for AI(ai links)': 'AI向けドキュメント',
+      'Copy URL(ai links)': 'リンクをコピー',
+      'Index(ai links)': '目次',
+      'Full docs(ai links)': '全文',
     },
   })
 
