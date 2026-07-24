@@ -27,6 +27,13 @@ export const translations = i18n
       'Copy URL(ai links)',
       'Index(ai links)',
       'Full docs(ai links)',
+      'Expand(mermaid)',
+      'Expand diagram to fullscreen(mermaid)',
+      'Diagram viewer(mermaid)',
+      'Diagram canvas, scroll to zoom, drag to pan(mermaid)',
+      'Zoom in(mermaid)',
+      'Zoom out(mermaid)',
+      'Fit to screen(mermaid)',
     ],
   })
   .add({
@@ -94,6 +101,14 @@ export const translations = i18n
       'Copy URL(ai links)': 'Sao chép liên kết',
       'Index(ai links)': 'Mục lục',
       'Full docs(ai links)': 'Toàn bộ',
+      'Expand(mermaid)': 'Mở rộng',
+      'Expand diagram to fullscreen(mermaid)': 'Mở sơ đồ toàn màn hình',
+      'Diagram viewer(mermaid)': 'Trình xem sơ đồ',
+      'Diagram canvas, scroll to zoom, drag to pan(mermaid)':
+        'Khung sơ đồ, cuộn để phóng to, kéo để di chuyển',
+      'Zoom in(mermaid)': 'Phóng to',
+      'Zoom out(mermaid)': 'Thu nhỏ',
+      'Fit to screen(mermaid)': 'Vừa màn hình',
     },
     ja: {
       displayName: '日本語',
@@ -156,6 +171,14 @@ export const translations = i18n
       'Copy URL(ai links)': 'リンクをコピー',
       'Index(ai links)': '目次',
       'Full docs(ai links)': '全文',
+      'Expand(mermaid)': '拡大',
+      'Expand diagram to fullscreen(mermaid)': '図を全画面で開く',
+      'Diagram viewer(mermaid)': '図ビューア',
+      'Diagram canvas, scroll to zoom, drag to pan(mermaid)':
+        '図キャンバス、スクロールで拡大縮小、ドラッグで移動',
+      'Zoom in(mermaid)': '拡大',
+      'Zoom out(mermaid)': '縮小',
+      'Fit to screen(mermaid)': '画面に合わせる',
     },
   })
 
